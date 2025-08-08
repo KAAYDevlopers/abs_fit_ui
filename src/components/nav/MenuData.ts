@@ -16,187 +16,140 @@ interface MenuItem {
 
 export const menuData: MenuItem[] = [
   {
-    label: "Buy properties",
-    href: "/buy",
+    label: "Proteins",
+    href: "/proteins",
     children: [
       {
-        heading: "Homes for sale",
+        heading: "Whey Proteins",
         submenu: [
+          { label: "Whey Proteins", href: "/proteins/whey-proteins" },
           {
-            label: "Lorem ipsum dolor sit amet consectetur",
-            href: "#",
-          },
-          { label: "Ipsam sequi provident", href: "#" },
-          { label: "Porro impedit exercitationem", href: "#" },
-        ],
-      },
-      {
-        heading: "New Construction For Sale",
-        submenu: [
-          { label: "Excepturi corporis atque libero", href: "#" },
-          {
-            label: "Ratione recusandae incidunt atque libero",
-            href: "#",
+            label: "Whey Protein Isolates",
+            href: "/proteins/whey-protein-isolates",
           },
           {
-            label: "Excepturi corporis atque libero",
-            href: "#",
+            label: "Hydrolyzed Proteins",
+            href: "/proteins/hydrolyzed-proteins",
+          },
+          {
+            label: "Beginners Whey Protein",
+            href: "/proteins/beginners-whey-protein",
           },
         ],
       },
       {
-        heading: "Homes values",
+        heading: "Specialty Proteins",
         submenu: [
-          {
-            label: "Exercitationem corporis a voluptas at atque libero",
-            href: "#",
-          },
-          { label: "Provident, odio obcaecati", href: "#" },
-          {
-            label: "Porro impedit corporis atque libero dolor impedit corporis",
-            href: "#",
-          },
+          { label: "Raw Whey", href: "/proteins/raw-whey" },
+          { label: "Whey Blends", href: "/proteins/whey-blends" },
+          { label: "Egg Proteins", href: "/proteins/egg-proteins" },
         ],
       },
       {
-        heading: "Home buying tips",
+        heading: "Plant Based",
         submenu: [
-          { label: "Corporis consequatur consectetur", href: "#" },
-          {
-            label: "Accusamus vero beatae dolor impedit corporis",
-            href: "#",
-          },
-          { label: "Ab corrupti deserunt laborum", href: "#" },
+          { label: "Soy Proteins", href: "/proteins/soy-proteins" },
+          { label: "Pea Proteins", href: "/proteins/pea-proteins" },
+          { label: "Plant Protein", href: "/proteins/plant-protein" },
+        ],
+      },
+      {
+        heading: "Other Proteins",
+        submenu: [
+          { label: "Collagen", href: "/proteins/collagen" },
+          { label: "Protein For Women", href: "/proteins/protein-for-women" },
         ],
       },
     ],
   },
   {
-    label: "Rent homes",
-    href: "/rent",
+    label: "Gainers",
+    href: "/gainers",
     children: [
       {
-        heading: "Apartments for rent",
+        heading: "Mass Gainers",
         submenu: [
-          { label: "Lorem ipsum dolor sit consectetur", href: "#" },
+          { label: "Weight Gainers", href: "/gainers/weight-gainers" },
+          { label: "Mass Gainers", href: "/gainers/mass-gainers" },
+          { label: "Lean Mass Gainer", href: "/gainers/lean-mass-gainer" },
           {
-            label: "Ratione recusandae incidunt dolor impedit corporis",
-            href: "#",
+            label: "Herbal Weight Gainer",
+            href: "/gainers/herbal-weight-gainer",
           },
-          { label: "Accusamus vero beatae dolor", href: "#" },
-        ],
-      },
-      {
-        heading: "Landlord tools",
-        submenu: [
-          { label: "Excepturi sapiente sequi", href: "#" },
-          {
-            label: "Ratione recusandae dolor impedit corporis",
-            href: "#",
-          },
-          { label: "Dolor sit consectetur dolor impedit", href: "#" },
-          { label: "Repellat corporis excepturi", href: "#" },
-          { label: "Corporis consequatur", href: "#" },
-        ],
-      },
-      {
-        heading: "Home renting tips",
-        submenu: [
-          { label: "Lorem ipsum dolor sit consectetur", href: "#" },
-          { label: "Repellat corporis excepturi?", href: "#" },
-          {
-            label: "Dolor sit consectetur dolor impedit corporis",
-            href: "#",
-          },
-          { label: "Ratione recusandae", href: "#" },
         ],
       },
     ],
   },
   {
-    label: "Sell",
-    href: "/sell",
+    label: "Pre/Intra Workouts",
+    href: "/pre-intra-workouts",
     children: [
       {
-        heading: "Home selling tools",
+        heading: "Pre Workout",
         submenu: [
-          { label: "Lorem ipsum dolor sit consectetur", href: "#" },
-          {
-            label: "Dolor sit consectetur dolor impedit corporis",
-            href: "#",
-          },
-          { label: "Corporis consequatur", href: "#" },
+          { label: "Pre-Workout", href: "/pre-intra-workouts/pre-workout" },
+          { label: "Creatine", href: "/pre-intra-workouts/creatine" },
+          { label: "Citrulline", href: "/pre-intra-workouts/citrulline" },
+          { label: "Beta-Alanine", href: "/pre-intra-workouts/beta-alanine" },
         ],
       },
       {
-        heading: "Home selling advice",
+        heading: "Intra/Post Workout",
         submenu: [
-          {
-            label: "Lorem ipsum dolor sit amet consectetur",
-            href: "#",
-          },
-          { label: "Lorem ipsum dolor sit consectetur", href: "#" },
-          {
-            label: "Ratione recusandae incidunt dolor impedit corporis",
-            href: "#",
-          },
-          {
-            label: "Accusamus vero beatae dolor dolor impedit ",
-            href: "#",
-          },
-          { label: "Lorem ipsum dolor sit consectetur", href: "#" },
-          { label: "Ratione recusandae incidunt", href: "#" },
-          { label: "Accusamus vero beatae dolor", href: "#" },
+          { label: "Post-Workouts", href: "/pre-intra-workouts/post-workouts" },
+          { label: "BCAAs", href: "/pre-intra-workouts/bcaas" },
+          { label: "EAAs", href: "/pre-intra-workouts/eaas" },
+          { label: "Glutamine", href: "/pre-intra-workouts/glutamine" },
         ],
       },
       {
-        heading: "Recently sold",
+        heading: "Recovery",
         submenu: [
-          {
-            label: "Ratione recusandae incidunt dolor impedit corporis",
-            href: "#",
-          },
+          { label: "Carnitine", href: "/pre-intra-workouts/carnitine" },
+          { label: "HMB", href: "/pre-intra-workouts/hmb" },
+          { label: "Arginine", href: "/pre-intra-workouts/arginine" },
         ],
       },
     ],
   },
-  { label: "News & Insights", href: "/news" },
   {
-    label: "Mortgage",
-    href: "/mortgage",
+    label: "Workout Essentials",
+    href: "/workout-essentials",
     children: [
       {
-        heading: "Mortgage rates",
+        heading: "Health Support",
         submenu: [
-          { label: "Lorem ipsum dolor", href: "#" },
-          { label: "Repellat corporis?", href: "#" },
-          { label: "Dolor sit consectetur dolor impedit", href: "#" },
-          { label: "Ratione recusandae", href: "#" },
-          { label: "Dolor sit consectetur", href: "#" },
-          { label: "Ratione recusandae", href: "#" },
-        ],
-      },
-      {
-        heading: "Calculators",
-        submenu: [
-          { label: "Dolor sit consectetur", href: "#" },
-          { label: "Ratione recusandae dolor impedit", href: "#" },
-          { label: "Dolor sit consectetur", href: "#" },
-          { label: "Ratione recusandae", href: "#" },
-        ],
-      },
-      {
-        heading: "Financial advice",
-        submenu: [
-          { label: "Lorem ipsum dolor", href: "#" },
-          { label: "Repellat corporis?", href: "#" },
-          { label: "Dolor sit consectetur", href: "#" },
+          { label: "MultiVitamins", href: "/workout-essentials/multivitamins" },
           {
-            label: "Ratione recusandae dolor impedit corporis",
-            href: "#",
+            label: "Fish Oil/Omega",
+            href: "/workout-essentials/fish-oil-omega",
           },
-          { label: "Dolor sit consectetur", href: "#" },
-          { label: "Ratione recusandae", href: "#" },
+          { label: "ZMA", href: "/workout-essentials/zma" },
+        ],
+      },
+      {
+        heading: "Performance",
+        submenu: [
+          {
+            label: "Testosterone Support",
+            href: "/workout-essentials/testosterone-support",
+          },
+          { label: "Fat Burner", href: "/workout-essentials/fat-burner" },
+          { label: "L-Carnitine", href: "/workout-essentials/l-carnitine" },
+        ],
+      },
+    ],
+  },
+  {
+    label: "Protein Foods",
+    href: "/protein-foods",
+    children: [
+      {
+        heading: "Protein Snacks",
+        submenu: [
+          { label: "Protein Bars", href: "/protein-foods/protein-bars" },
+          { label: "Protein Chips", href: "/protein-foods/protein-chips" },
+          { label: "Protein Cookies", href: "/protein-foods/protein-cookies" },
         ],
       },
     ],
