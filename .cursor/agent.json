@@ -1,0 +1,111 @@
+{
+    "agentPreferences": {
+      "codingStyle": "modular, clean, and readable",
+      "commentStyle": "concise and meaningful",
+      "writeDocstrings": true,
+      "includeTests": true,
+      "testCoverage": "high",
+      "refactorCode": true,
+      "avoidCodeDuplication": true,
+      "promptForMissingContext": true,
+      "errorHandling": "graceful and standardized",
+      "dependencyManagement": "minimal and project-specific",
+      "versionControl": "git-based with clear commit messages"
+    },
+    "reactPreferences": {
+      "useFunctionalComponents": true,
+      "useHooks": true,
+      "stateManagement": "Context API or Zustand",
+      "styling": "TailwindCSS or CSS Modules",
+      "routing": "React Router v6",
+      "typescript": false,
+      "lazyLoadRoutes": true,
+      "fileStructure": {
+        "components": "src/components/",
+        "pages": "src/pages/",
+        "services": "src/services/",
+        "utils": "src/utils/"
+      },
+      "propValidation": "PropTypes",
+      "preferUseEffectCleanup": true
+    },
+    "springBootPreferences": {
+      "architecture": "controller-service-repository",
+      "configStyle": "application.yml",
+      "apiVersioning": true,
+      "useDTOs": true,
+      "logging": "SLF4J",
+      "security": "Spring Security with OAuth2 / OIDC",
+      "validation": "javax or jakarta validation annotations",
+      "unitTesting": "JUnit 5 and Mockito",
+      "integrationTesting": "Testcontainers",
+      "exceptionHandling": "Global using @ControllerAdvice",
+      "databaseAccess": "Spring Data JPA",
+      "codeGeneration": "minimal, only for DTOs or repetitive models"
+    },
+    "pythonPreferences": {
+      "styleGuide": "PEP8",
+      "formatter": "black",
+      "linter": "flake8",
+      "typeChecking": "mypy",
+      "packageManager": "poetry",
+      "testFramework": "pytest",
+      "envManagement": "venv or poetry",
+      "useDocstrings": true,
+      "modularCode": true,
+      "avoidGlobalState": true,
+      "logging": "logging module"
+    },
+    "sparkPreferences": {
+      "useDataFrameAPI": true,
+      "avoidUDFsUnlessNecessary": true,
+      "modularizeJobs": true,
+      "cacheOnlyWhenRequired": true,
+      "configurableJob": true,
+      "clusterAgnosticCode": true,
+      "logging": "log4j or Python logging",
+      "monitoring": "recommend Spark UI or Airflow"
+    },
+    "testingPreferences": {
+      "react": {
+        "framework": "React Testing Library",
+        "includeTests": true,
+        "preferredTests": ["unit", "integration"]
+      },
+      "springBoot": {
+        "includeTests": true,
+        "unitTestFramework": "JUnit 5",
+        "mocking": "Mockito",
+        "integrationTestFramework": "SpringBootTest or Testcontainers"
+      },
+      "python": {
+        "includeTests": true,
+        "framework": "pytest",
+        "coverageThreshold": 80
+      }
+    },
+    "folders": {
+      "frontend": "react-app",
+      "backend": "spring-service",
+      "dataJobs": "spark-jobs",
+      "scripts": "python-scripts",
+      "config": "config",
+      "tests": "tests"
+    },
+    "securityPreferences": {
+      "react": {
+        "sanitizeUserInput": true,
+        "avoidInlineScripts": true
+      },
+      "springBoot": {
+        "useCSRFProtection": true,
+        "enforceHTTPS": true,
+        "oauth2Support": true
+      },
+      "python": {
+        "validateInput": true,
+        "avoidHardcodedSecrets": true
+      }
+    }
+  }
+  
