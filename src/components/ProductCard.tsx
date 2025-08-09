@@ -4,8 +4,8 @@ import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
 import CardMedia from "@mui/material/CardMedia";
 import { Box, Button, ButtonGroup } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 import ReviewsView from "./ReviewsView";
-import ProductModal from "./ProductModal";
 import _get from "lodash/get";
 import { CurrencyFormatter } from "../common/utils";
 import { Product } from "../types";
@@ -113,7 +113,12 @@ const Text = styled("p")(({ theme }) => ({
 
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const [count, setCount] = React.useState(0);
+  const navigate = useNavigate();
   const { buyPrice, onSalePrice } = _get(product, "productVariants[0]");
+
+  const handleProductClick = () => {
+    navigate(`/product/${product.id}`);
+  };
 
   const getDiscount = () => {
     return 100 - Math.round((onSalePrice / buyPrice) * 100);
@@ -125,6 +130,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         <ButtonGroup
           variant="contained"
           aria-label="outlined primary button group"
+          onClick={(e) => e.stopPropagation()}
         >
           <Button onClick={() => setCount(count - 1)}>-</Button>
           <Box mx={2} display="flex" alignItems="center">
@@ -137,7 +143,8 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       return (
         <Button
           variant="contained"
-          onClick={() => {
+          onClick={(e) => {
+            e.stopPropagation();
             setCount(count + 1);
           }}
         >
@@ -160,7 +167,14 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             maxWidth: 345,
             border: "1px solid #e5e5e5",
             borderRadius: "6px",
+            cursor: "pointer",
+            transition: "transform 0.2s ease, box-shadow 0.2s ease",
+            "&:hover": {
+              transform: "translateY(-2px)",
+              boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
+            },
           }}
+          onClick={handleProductClick}
         >
           <CardHeader
             avatar={
