@@ -1,15 +1,15 @@
-import React from 'react';
-import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
-import { styled } from '@mui/material/styles';
+import React from "react";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import styles from "../styles/components/Carousel.module.scss";
 
 const banners = [
-  require('../content/car1.png'),
-  require('../content/car2.png'),
-  require('../content/car3.png'),
-  require('../content/car4.png'),
-  require('../content/car5.png'),
+  require("../content/car1.png"),
+  require("../content/car2.png"),
+  require("../content/car3.png"),
+  require("../content/car4.png"),
+  require("../content/car5.png"),
 ];
 
 const Carousel = () => {
@@ -23,25 +23,18 @@ const Carousel = () => {
     autoplaySpeed: 5000,
   };
 
-  const StyledSlider = styled(Slider)(({ theme }) => ({
-    marginBottom: '32px',
-    [theme.breakpoints.up('lg')]: {
-      marginBottom: '3rem!important',
-    },
-  }));
-
   return (
-    <StyledSlider {...settings}>
+    <Slider {...settings} className={styles.styledSlider}>
       {banners.map((banner, index) => (
         <div key={index}>
           <img
             src={banner}
             alt={`Banner ${index + 1}`}
-            style={{ width: '100%', maxHeight: '400px' }}
+            className={styles.bannerImage}
           />
         </div>
       ))}
-    </StyledSlider>
+    </Slider>
   );
 };
 

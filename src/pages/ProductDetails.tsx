@@ -17,13 +17,14 @@ import {
   ListItem,
   ListItemText,
 } from "@mui/material";
-import { styled } from "@mui/material/styles";
+import clsx from "clsx";
 import ShareIcon from "@mui/icons-material/Share";
 import SecurityIcon from "@mui/icons-material/Security";
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import BreadcrumbsCust from "../components/Breadcrumbs";
 import { Product } from "../types";
+import styles from "../styles/pages/ProductDetails.module.scss";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -45,111 +46,12 @@ const TabPanel: React.FC<TabPanelProps> = ({
       aria-labelledby={`simple-tab-${index}`}
       {...other}
     >
-      {value === index && <Box sx={{ p: 3 }}>{children}</Box>}
+      {value === index && <Box className={styles.tabPanel}>{children}</Box>}
     </div>
   );
 };
 
-const ProductImageContainer = styled(Box)(({ theme }) => ({
-  position: "relative",
-  border: "1px solid #e0e0e0",
-  borderRadius: "8px",
-  overflow: "hidden",
-  "& img": {
-    width: "100%",
-    height: "auto",
-    maxHeight: "500px",
-    objectFit: "contain",
-  },
-}));
-
-const PriceTag = styled(Box)(({ theme }) => ({
-  position: "absolute",
-  top: "20px",
-  left: "0",
-  backgroundColor: "#00bcd4",
-  color: "white",
-  padding: "8px 16px",
-  borderRadius: "0 4px 4px 0",
-  fontWeight: "bold",
-  fontSize: "14px",
-}));
-
-const ThumbnailContainer = styled(Box)(({ theme }) => ({
-  display: "flex",
-  gap: "10px",
-  marginTop: "15px",
-  flexWrap: "wrap",
-}));
-
-const ThumbnailImage = styled("img")<{ selected?: boolean }>(
-  ({ theme, selected }) => ({
-    width: "80px",
-    height: "80px",
-    objectFit: "cover",
-    border: selected ? "2px solid #00bcd4" : "1px solid #e0e0e0",
-    borderRadius: "4px",
-    cursor: "pointer",
-    transition: "border-color 0.2s",
-    "&:hover": {
-      borderColor: "#00bcd4",
-    },
-  })
-);
-
-const PriceContainer = styled(Box)(({ theme }) => ({
-  display: "flex",
-  alignItems: "center",
-  gap: "15px",
-  marginBottom: "20px",
-}));
-
-const CurrentPrice = styled(Typography)(({ theme }) => ({
-  fontSize: "32px",
-  fontWeight: "bold",
-  color: "#333",
-}));
-
-const OriginalPrice = styled(Typography)(({ theme }) => ({
-  fontSize: "18px",
-  color: "#999",
-  textDecoration: "line-through",
-}));
-
-const DiscountChip = styled(Chip)(({ theme }) => ({
-  backgroundColor: "#00bcd4",
-  color: "white",
-  fontWeight: "bold",
-}));
-
-const BestPriceBox = styled(Box)(({ theme }) => ({
-  backgroundColor: "#e8f5e8",
-  border: "1px solid #4caf50",
-  borderRadius: "8px",
-  padding: "12px 16px",
-  marginBottom: "20px",
-  display: "flex",
-  alignItems: "center",
-  gap: "10px",
-}));
-
-const FeatureBox = styled(Box)(({ theme }) => ({
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "space-around",
-  backgroundColor: "#f8f9fa",
-  padding: "20px",
-  borderRadius: "8px",
-  marginTop: "20px",
-}));
-
-const FeatureItem = styled(Box)(({ theme }) => ({
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
-  textAlign: "center",
-  gap: "8px",
-}));
+// Styled components have been replaced with SCSS modules
 
 const ProductDetails: React.FC = () => {
   const [selectedImage, setSelectedImage] = useState<number>(0);
@@ -219,8 +121,8 @@ const ProductDetails: React.FC = () => {
       <Box sx={{ display: "flex", flexWrap: "wrap", gap: 4, mt: 2 }}>
         {/* Left Side - Product Images */}
         <Box sx={{ flex: { xs: "1 1 100%", md: "1 1 45%" } }}>
-          <ProductImageContainer>
-            <PriceTag>Lowest Price on 5lbs</PriceTag>
+          <Box className={styles.productImageContainer}>
+            <Box className={styles.priceTag}>Lowest Price on 5lbs</Box>
             <img src={productImages[selectedImage]} alt={product.name} />
             <IconButton
               sx={{
@@ -232,19 +134,21 @@ const ProductDetails: React.FC = () => {
             >
               <ShareIcon />
             </IconButton>
-          </ProductImageContainer>
+          </Box>
 
-          <ThumbnailContainer>
+          <Box className={styles.thumbnailContainer}>
             {productImages.map((image, index) => (
-              <ThumbnailImage
+              <img
                 key={index}
                 src={image}
                 alt={`Product ${index + 1}`}
-                selected={selectedImage === index}
+                className={clsx(styles.thumbnailImage, {
+                  [styles.selected]: selectedImage === index,
+                })}
                 onClick={() => setSelectedImage(index)}
               />
             ))}
-          </ThumbnailContainer>
+          </Box>
         </Box>
 
         {/* Right Side - Product Details */}
@@ -279,15 +183,20 @@ const ProductDetails: React.FC = () => {
             </Typography>
           </Box>
 
-          <PriceContainer>
-            <CurrentPrice>
+          <Box className={styles.priceContainer}>
+            <Typography className={styles.currentPrice}>
               ₹{product.onSalePrice?.toLocaleString()}
-            </CurrentPrice>
-            <OriginalPrice>₹{product.buyPrice?.toLocaleString()}</OriginalPrice>
-            <DiscountChip label={`(${getDiscount()}% OFF)`} />
-          </PriceContainer>
+            </Typography>
+            <Typography className={styles.originalPrice}>
+              ₹{product.buyPrice?.toLocaleString()}
+            </Typography>
+            <Chip
+              className={styles.discountChip}
+              label={`(${getDiscount()}% OFF)`}
+            />
+          </Box>
 
-          <BestPriceBox>
+          <Box className={styles.bestPriceBox}>
             <SecurityIcon sx={{ color: "#4caf50" }} />
             <Box>
               <Typography variant="body1" sx={{ fontWeight: "600" }}>
@@ -300,7 +209,7 @@ const ProductDetails: React.FC = () => {
                 </Button>
               </Typography>
             </Box>
-          </BestPriceBox>
+          </Box>
 
           <Typography variant="body1" sx={{ mb: 2 }}>
             <strong>Availability:</strong>{" "}
@@ -351,21 +260,13 @@ const ProductDetails: React.FC = () => {
             variant="contained"
             size="large"
             fullWidth
-            sx={{
-              mb: 2,
-              py: 1.5,
-              fontSize: "18px",
-              backgroundColor: "#1976d2",
-              "&:hover": {
-                backgroundColor: "#1565c0",
-              },
-            }}
+            className={styles.addToCartButton}
           >
             Add to cart
           </Button>
 
-          <FeatureBox>
-            <FeatureItem>
+          <Box className={styles.featureBox}>
+            <Box className={styles.featureItem}>
               <SecurityIcon sx={{ fontSize: 40, color: "#00bcd4" }} />
               <Typography variant="body2" sx={{ fontWeight: "600" }}>
                 Authenticity
@@ -373,27 +274,25 @@ const ProductDetails: React.FC = () => {
               <Typography variant="body2" color="text.secondary">
                 Guaranteed
               </Typography>
-            </FeatureItem>
-            <FeatureItem>
+            </Box>
+            <Box className={styles.featureItem}>
               <LocalShippingIcon sx={{ fontSize: 40, color: "#00bcd4" }} />
               <Typography variant="body2" sx={{ fontWeight: "600" }}>
                 Free Shipping
               </Typography>
-            </FeatureItem>
-            <FeatureItem>
+            </Box>
+            <Box className={styles.featureItem}>
               <AttachMoneyIcon sx={{ fontSize: 40, color: "#00bcd4" }} />
               <Typography variant="body2" sx={{ fontWeight: "600" }}>
                 Cash on Delivery
               </Typography>
-            </FeatureItem>
-          </FeatureBox>
+            </Box>
+          </Box>
         </Box>
       </Box>
 
       {/* Manufacturer Information */}
-      <Box
-        sx={{ mt: 4, p: 3, backgroundColor: "#f8f9fa", borderRadius: "8px" }}
-      >
+      <Box className={styles.manufacturerInfo}>
         <Typography variant="h6" sx={{ mb: 2, fontWeight: "600" }}>
           Manufacturer
         </Typography>

@@ -1,28 +1,5 @@
-import { styled } from "@mui/system";
 import Rating from "@mui/material/Rating";
-
-const StarContainer = styled("div")({
-  display: "flex",
-  alignItems: "center",
-});
-
-const CustomRating = styled(Rating)(({ theme }) => ({
-  color: theme.palette.primary.main, // Light blue color
-  marginRight: "4px",
-}));
-
-const Text = styled("div")(({ theme }) => ({
-  color: "#1a181e",
-  fontSize: "12px!important",
-  lineHeight: "16px!important",
-  fontWeight: "bold",
-  zIndex: 999,
-  [theme.breakpoints.up("lg")]: {
-    fontSize: "14px!important",
-    lineHeight: "20px!important",
-    marginLeft: "6px",
-  },
-}));
+import styles from "../styles/components/ReviewsView.module.scss";
 
 interface RatingStarsProps {
   rating: number;
@@ -31,16 +8,21 @@ interface RatingStarsProps {
 
 const RatingStars: React.FC<RatingStarsProps> = ({ rating, count }) => {
   return (
-    <StarContainer>
-      <CustomRating value={rating} precision={0.1} readOnly />
-      <Text>{count} Reviews</Text>
-    </StarContainer>
+    <div className={styles.starContainer}>
+      <Rating
+        value={rating}
+        precision={0.1}
+        readOnly
+        className={styles.customRating}
+      />
+      <div className={styles.text}>{count} Reviews</div>
+    </div>
   );
 };
 
 const ReviewsView: React.FC = () => {
   return (
-    <div style={{ marginLeft: "20px" }}>
+    <div className={styles.reviewsContainer}>
       <RatingStars rating={4.6} count={50} />
     </div>
   );

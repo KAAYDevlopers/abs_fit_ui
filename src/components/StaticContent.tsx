@@ -1,39 +1,13 @@
-import styled from "@emotion/styled";
 import { Typography, List, ListItem, ListItemText, Box } from "@mui/material";
 import CircleIcon from "@mui/icons-material/Circle";
-
-const StyledListItem = styled(ListItem)(() => ({
-  display: "flex",
-  alignItems: "center", // Center items vertically
-  padding: "0px",
-  "& .MuiListItemText-root": {
-    marginLeft: 16, // Adjust the left margin as needed
-  },
-}));
-
-const CircleIconStyled = styled(CircleIcon)({
-  fontSize: 10,
-});
+import styles from "../styles/components/StaticContent.module.scss";
 
 const StaticContent = () => {
   return (
     <Box sx={{ display: "flex", flexDirection: "column" }}>
-      <Box sx={{ margin: "32px 0px" }}>
-        <Box
-          sx={{
-            flexDirection: "column",
-            display: "flex",
-          }}
-        >
-          <Typography
-            variant="h6"
-            fontWeight={700}
-            sx={{
-              marginBottom: "0.5rem",
-              fontSize: "18px",
-              lineHeight: "26px",
-            }}
-          >
+      <Box className={styles.contentSection}>
+        <Box className={styles.sectionContainer}>
+          <Typography variant="h6" className={styles.sectionTitle}>
             Bodybuilding, Fitness, Health & Nutritional Supplements Online Store
           </Typography>
           <Typography fontWeight={400}>
@@ -52,25 +26,12 @@ const StaticContent = () => {
           </Typography>
         </Box>
       </Box>
-      <Box sx={{ marginBottom: "32px" }}>
-        <Box
-          sx={{
-            flexDirection: "column",
-            display: "flex",
-          }}
-        >
-          <Typography
-            variant="h6"
-            fontWeight={700}
-            sx={{
-              marginBottom: "0.5rem",
-              fontSize: "18px",
-              lineHeight: "26px",
-            }}
-          >
+      <Box className={styles.bottomSection}>
+        <Box className={styles.sectionContainer}>
+          <Typography variant="h6" className={styles.sectionTitle}>
             Our Speciality
           </Typography>
-          <Typography fontWeight={400} sx={{ marginBottom: "0.5rem" }}>
+          <Typography fontWeight={400} className={styles.paragraphSpacing}>
             HealthXP entered the fitness world with a pledge to deliver
             authenticity. From whey protein, mass gainers, pre/post workout
             essentials, to any other nutritional supplement/product you need,
@@ -79,41 +40,41 @@ const StaticContent = () => {
             supplements, such as:
           </Typography>
           <List disablePadding>
-            <StyledListItem>
-              <CircleIconStyled />
+            <ListItem className={styles.styledListItem}>
+              <CircleIcon className={styles.circleIcon} />
               <ListItemText>
                 Wide range of product categories with top brands like Optimum
                 Nutrition, GAT sports, Muscletech, Isopure, etc.
               </ListItemText>
-            </StyledListItem>
-            <StyledListItem>
-              <CircleIconStyled />
+            </ListItem>
+            <ListItem className={styles.styledListItem}>
+              <CircleIcon className={styles.circleIcon} />
               <ListItemText>
                 Fitness plans with in-depth video material on different
                 exercises and forms, workouts, nutrition data, and much more.
               </ListItemText>
-            </StyledListItem>
-            <StyledListItem>
-              <CircleIconStyled />
+            </ListItem>
+            <ListItem className={styles.styledListItem}>
+              <CircleIcon className={styles.circleIcon} />
               <ListItemText>
                 Comparison and Consultation about the right product for your
                 fitness goal.
               </ListItemText>
-            </StyledListItem>
-            <StyledListItem>
-              <CircleIconStyled />
+            </ListItem>
+            <ListItem className={styles.styledListItem}>
+              <CircleIcon className={styles.circleIcon} />
               <ListItemText>Exciting discounts & offers</ListItemText>
-            </StyledListItem>
-            <StyledListItem>
-              <CircleIconStyled />
+            </ListItem>
+            <ListItem className={styles.styledListItem}>
+              <CircleIcon className={styles.circleIcon} />
               <ListItemText>
                 100% authentic online protein supplements
               </ListItemText>
-            </StyledListItem>
-            <StyledListItem>
-              <CircleIconStyled />
+            </ListItem>
+            <ListItem className={styles.styledListItem}>
+              <CircleIcon className={styles.circleIcon} />
               <ListItemText>Easy Delivery and Return Policy</ListItemText>
-            </StyledListItem>
+            </ListItem>
           </List>
         </Box>
       </Box>
@@ -157,28 +118,28 @@ const StaticContent = () => {
               listStyle: "inside !important",
             }}
           >
-            <StyledListItem>
-              <CircleIconStyled />
+            <ListItem className={styles.styledListItem}>
+              <CircleIcon className={styles.circleIcon} />
               <ListItemText>Whey Protein</ListItemText>
-            </StyledListItem>
-            <StyledListItem>
-              <CircleIconStyled />
+            </ListItem>
+            <ListItem className={styles.styledListItem}>
+              <CircleIcon className={styles.circleIcon} />
               <ListItemText>Mass gainers</ListItemText>
-            </StyledListItem>
-            <StyledListItem>
-              <CircleIconStyled />
+            </ListItem>
+            <ListItem className={styles.styledListItem}>
+              <CircleIcon className={styles.circleIcon} />
               <ListItemText>Pre/post workout essentials</ListItemText>
-            </StyledListItem>
-            <StyledListItem>
-              <CircleIconStyled />
+            </ListItem>
+            <ListItem className={styles.styledListItem}>
+              <CircleIcon className={styles.circleIcon} />
               <ListItemText>General wellness</ListItemText>
-            </StyledListItem>
-            <StyledListItem>
-              <CircleIconStyled />
+            </ListItem>
+            <ListItem className={styles.styledListItem}>
+              <CircleIcon className={styles.circleIcon} />
               <ListItemText>
                 Protein foods/drinks to maintain your fitness.
               </ListItemText>
-            </StyledListItem>
+            </ListItem>
           </List>
           <Typography
             variant="h6"
@@ -230,26 +191,26 @@ const StaticContent = () => {
               listStyle: "inside !important",
             }}
           >
-            <StyledListItem>
-              <CircleIconStyled />
+            <ListItem className={styles.styledListItem}>
+              <CircleIcon className={styles.circleIcon} />
               <ListItemText>Herbal Gainers</ListItemText>
-            </StyledListItem>
-            <StyledListItem>
-              <CircleIconStyled />
+            </ListItem>
+            <ListItem className={styles.styledListItem}>
+              <CircleIcon className={styles.circleIcon} />
               <ListItemText>Weight loss herbs</ListItemText>
-            </StyledListItem>
-            <StyledListItem>
-              <CircleIconStyled />
+            </ListItem>
+            <ListItem className={styles.styledListItem}>
+              <CircleIcon className={styles.circleIcon} />
               <ListItemText>Herbal Extracts</ListItemText>
-            </StyledListItem>
-            <StyledListItem>
-              <CircleIconStyled />
+            </ListItem>
+            <ListItem className={styles.styledListItem}>
+              <CircleIcon className={styles.circleIcon} />
               <ListItemText>Hair growth herbs</ListItemText>
-            </StyledListItem>
-            <StyledListItem>
-              <CircleIconStyled />
+            </ListItem>
+            <ListItem className={styles.styledListItem}>
+              <CircleIcon className={styles.circleIcon} />
               <ListItemText>Digestive care herbs</ListItemText>
-            </StyledListItem>
+            </ListItem>
           </List>
           <Typography
             fontSize="14px"
@@ -310,42 +271,42 @@ const StaticContent = () => {
               listStyle: "inside !important",
             }}
           >
-            <StyledListItem>
-              <CircleIconStyled />
+            <ListItem className={styles.styledListItem}>
+              <CircleIcon className={styles.circleIcon} />
               <ListItemText>
                 Authentic Online Protein Supplements: Healthxp has reduced the
                 gap between the importer and the customer, which keeps the
                 products away from adulteration in terms of quality and
                 quantity.
               </ListItemText>
-            </StyledListItem>
-            <StyledListItem>
-              <CircleIconStyled />
+            </ListItem>
+            <ListItem className={styles.styledListItem}>
+              <CircleIcon className={styles.circleIcon} />
               <ListItemText>
                 You can check our authenticity page for more details.You can
                 check our authenticity page for more details.You can check our
                 authenticity page for more details.
               </ListItemText>
-            </StyledListItem>
-            <StyledListItem>
-              <CircleIconStyled />
+            </ListItem>
+            <ListItem className={styles.styledListItem}>
+              <CircleIcon className={styles.circleIcon} />
               <ListItemText>
                 Affordable Rates: Buy genuine, stay fit is our motto, which
                 applies to everything in terms of affordable pricing, superior
                 quality, and quantity.
               </ListItemText>
-            </StyledListItem>
-            <StyledListItem>
-              <CircleIconStyled />
+            </ListItem>
+            <ListItem className={styles.styledListItem}>
+              <CircleIcon className={styles.circleIcon} />
               <ListItemText>
                 Top authentic brands: HealthXP has tied up with around 100
                 renowned and genuine fitness brands to cater to your fitness
                 goals. To find more about our top 15 brands, check our brand's
                 page.
               </ListItemText>
-            </StyledListItem>
-            <StyledListItem>
-              <CircleIconStyled />
+            </ListItem>
+            <ListItem className={styles.styledListItem}>
+              <CircleIcon className={styles.circleIcon} />
               <ListItemText>
                 {" "}
                 Detailed information on every product: Before you buy a product
@@ -353,9 +314,9 @@ const StaticContent = () => {
                 knowledged/aware with the features and usage instructions of the
                 product.
               </ListItemText>
-            </StyledListItem>
-            <StyledListItem>
-              <CircleIconStyled />
+            </ListItem>
+            <ListItem className={styles.styledListItem}>
+              <CircleIcon className={styles.circleIcon} />
               <ListItemText>
                 {" "}
                 Consultation with health experts: If you need information other
@@ -364,33 +325,33 @@ const StaticContent = () => {
                 You could connect with them through SMS or emails to answer your
                 query at no cost.
               </ListItemText>
-            </StyledListItem>
-            <StyledListItem>
-              <CircleIconStyled />
+            </ListItem>
+            <ListItem className={styles.styledListItem}>
+              <CircleIcon className={styles.circleIcon} />
               <ListItemText>
                 {" "}
                 Easy delivery and return at your doorstep: From remote areas
                 like North East to A-1 metros, we are always at your service
                 delivering product in safe-packaging.
               </ListItemText>
-            </StyledListItem>
-            <StyledListItem>
-              <CircleIconStyled />
+            </ListItem>
+            <ListItem className={styles.styledListItem}>
+              <CircleIcon className={styles.circleIcon} />
               <ListItemText>
                 {" "}
                 Top Brands: HealthXP | Dymatize | Optimum Nutrition | Muscletech
                 | Isopure | Scivation | Labrada | EVL | Rule1
               </ListItemText>
-            </StyledListItem>
-            <StyledListItem>
-              <CircleIconStyled />
+            </ListItem>
+            <ListItem className={styles.styledListItem}>
+              <CircleIcon className={styles.circleIcon} />
               <ListItemText>
                 {" "}
                 Top Categories: Whey Protein | Whey Protein Isolate | Mass
                 Gainer | Protein Bars | Hydrolyzed Whey | Multivitamins Tablets
                 | Apple Cider Vinegar
               </ListItemText>
-            </StyledListItem>
+            </ListItem>
           </List>
         </Box>
       </Box>

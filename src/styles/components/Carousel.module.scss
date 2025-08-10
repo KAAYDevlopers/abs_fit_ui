@@ -1,0 +1,17 @@
+.centered {
+  text-align: center;
+}
+
+.styledSlider {
+  margin-bottom: 32px;
+
+  @media (min-width: 1200px) {
+    // lg breakpoint
+    margin-bottom: 3rem !important;
+  }
+}
+
+.bannerImage {
+  width: 100%;
+  max-height: 400px;
+}

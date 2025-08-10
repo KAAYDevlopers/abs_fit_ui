@@ -1,0 +1,28 @@
+.starContainer {
+  display: flex;
+  align-items: center;
+}
+
+.customRating {
+  color: var(--primary-color); // Using CSS variable for theme color
+  margin-right: 4px;
+}
+
+.text {
+  color: #1a181e;
+  font-size: 12px !important;
+  line-height: 16px !important;
+  font-weight: bold;
+  z-index: 999;
+
+  @media (min-width: 1200px) {
+    // lg breakpoint
+    font-size: 14px !important;
+    line-height: 20px !important;
+    margin-left: 6px;
+  }
+}
+
+.reviewsContainer {
+  margin-left: 20px;
+}

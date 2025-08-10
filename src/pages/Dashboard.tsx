@@ -1,6 +1,5 @@
 import * as React from "react";
 import { useEffect, useState } from "react";
-import { styled } from "@mui/material/styles";
 import Carousel from "../components/Carousel";
 import ProductCard from "../components/ProductCard";
 import { Box, Container, Typography, Button } from "@mui/material";
@@ -8,62 +7,9 @@ import api from "../infra/api";
 import { actions } from "../redux/slices/ProductCatalogSlice";
 import { useAppDispatch, useAppSelector } from "../hooks/redux";
 import { Product } from "../types";
+import styles from "../styles/pages/Dashboard.module.scss";
 
-const StyledSection = styled(Box)(({ theme }) => ({
-  marginBottom: "3rem",
-  width: "100%",
-}));
-
-const SectionHeader = styled(Box)(({ theme }) => ({
-  display: "flex",
-  justifyContent: "space-between",
-  alignItems: "center",
-  marginBottom: "2rem",
-}));
-
-const ProductGrid = styled(Box)(({ theme }) => ({
-  display: "flex",
-  flexWrap: "wrap",
-  gap: "1rem",
-  justifyContent: "flex-start",
-  [theme.breakpoints.down("md")]: {
-    justifyContent: "center",
-  },
-}));
-
-const CategoryGrid = styled(Box)(({ theme }) => ({
-  display: "flex",
-  flexWrap: "wrap",
-  gap: "1.5rem",
-  justifyContent: "center",
-  [theme.breakpoints.down("md")]: {
-    gap: "1rem",
-  },
-}));
-
-const CategoryCard = styled(Box)(({ theme }) => ({
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
-  padding: "2rem 1rem",
-  backgroundColor: "#fff",
-  borderRadius: "8px",
-  boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
-  cursor: "pointer",
-  transition: "transform 0.2s ease",
-  minWidth: "180px",
-  "&:hover": {
-    transform: "translateY(-4px)",
-    boxShadow: "0 4px 16px rgba(0,0,0,0.15)",
-  },
-}));
-
-const CategoryImage = styled("img")(({ theme }) => ({
-  width: "80px",
-  height: "80px",
-  objectFit: "contain",
-  marginBottom: "1rem",
-}));
+// Styled components replaced with SCSS module classes
 
 // Dummy data for fallback
 const dummyProducts: Product[] = [
@@ -116,9 +62,8 @@ const dummyProducts: Product[] = [
 const bestSellersData: Product[] = [
   {
     id: 5,
-    name: "Ultimate Nutrition ISO Sensation 93, Whey Protein Isolate Powder",
-    productName:
-      "Ultimate Nutrition ISO Sensation 93, Whey Protein Isolate Powder",
+    name: "Ultimate Nutrition ISO Sensation 93",
+    productName: "Whey Protein Isolate Powder",
     price: 7999,
     buyPrice: 10999,
     productVariants: [{ buyPrice: 10999, onSalePrice: 7999 }],
@@ -247,90 +192,80 @@ const Dashboard: React.FC = () => {
       <Carousel />
       <Container maxWidth="xl" sx={{ py: 4 }}>
         {/* Best Sellers Section */}
-        <StyledSection>
-          <SectionHeader>
+        <Box className={styles.styledSection}>
+          <Box className={styles.sectionHeader}>
             <Typography variant="h4" fontWeight="600" color="#333">
-              Best Sellers in absFitness
+              Our Top Sellers
             </Typography>
-            <Button
-              variant="outlined"
-              sx={{
-                borderColor: "#007acc",
-                color: "#007acc",
-                "&:hover": {
-                  backgroundColor: "#007acc",
-                  color: "white",
-                },
-              }}
-            >
+            <Button variant="outlined" className={styles.viewAllButton}>
               View all
             </Button>
-          </SectionHeader>
-          <ProductGrid>
+          </Box>
+          <Box className={styles.productGrid}>
             {bestSellers.map((product: Product, index: number) => (
               <ProductCard key={`bestseller-${index}`} product={product} />
             ))}
-          </ProductGrid>
-        </StyledSection>
+          </Box>
+        </Box>
 
         {/* Top Categories Section */}
-        <StyledSection>
-          <SectionHeader>
+        <Box className={styles.styledSection}>
+          <Box className={styles.sectionHeader}>
             <Typography variant="h4" fontWeight="600" color="#333">
               Top Categories
             </Typography>
-            <Button
-              variant="outlined"
-              sx={{
-                borderColor: "#007acc",
-                color: "#007acc",
-                "&:hover": {
-                  backgroundColor: "#007acc",
-                  color: "white",
-                },
-              }}
-            >
+            <Button variant="outlined" className={styles.viewAllButton}>
               Shop by Category
             </Button>
-          </SectionHeader>
-          <CategoryGrid>
+          </Box>
+          <Box className={styles.categoryGrid}>
             {topCategories.map((category, index) => (
-              <CategoryCard key={index}>
-                <CategoryImage src={category.image} alt={category.name} />
+              <Box key={index} className={styles.categoryCard}>
+                <img
+                  className={styles.categoryImage}
+                  src={category.image}
+                  alt={category.name}
+                />
                 <Typography variant="h6" textAlign="center" fontWeight="500">
                   {category.name}
                 </Typography>
-              </CategoryCard>
+              </Box>
             ))}
-          </CategoryGrid>
-        </StyledSection>
+          </Box>
+        </Box>
 
         {/* Best Sellers (Alternative Section) */}
-        <StyledSection>
-          <SectionHeader>
+        <Box className={styles.styledSection}>
+          <Box className={styles.sectionHeader}>
             <Typography variant="h4" fontWeight="600" color="#333">
               Best Sellers
             </Typography>
-            <Button
-              variant="outlined"
-              sx={{
-                borderColor: "#007acc",
-                color: "#007acc",
-                "&:hover": {
-                  backgroundColor: "#007acc",
-                  color: "white",
-                },
-              }}
-            >
+            <Button variant="outlined" className={styles.viewAllButton}>
               View all
             </Button>
-          </SectionHeader>
-          <ProductGrid>
+          </Box>
+          <Box className={styles.productGrid}>
             {absFitnessProducts.map((product: Product, index: number) => (
               <ProductCard key={`absFitness-${index}`} product={product} />
             ))}
-          </ProductGrid>
-        </StyledSection>
+          </Box>
+        </Box>
+        {/* Plan based product products */}
+        <Box className={styles.styledSection}>
+          <Box className={styles.sectionHeader}>
+            <Typography variant="h4" fontWeight="600" color="#333">
+              Plant Based Proteins
+            </Typography>
+            <Button variant="outlined" className={styles.viewAllButton}>
+              View all
+            </Button>
+          </Box>
+          <Box className={styles.productGrid}>
+            {absFitnessProducts.map((product: Product, index: number) => (
+              <ProductCard key={`absFitness-${index}`} product={product} />
+            ))}
+          </Box>
+        </Box>
       </Container>
     </>
   );

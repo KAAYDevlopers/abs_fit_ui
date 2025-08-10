@@ -1,0 +1,52 @@
+/* Drawer.module.scss */
+
+.drawerHeader {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 8px;
+  // necessary for content to be below app bar
+}
+
+.drawer {
+  width: 240px;
+  flex-shrink: 0;
+  white-space: nowrap;
+  box-sizing: border-box;
+}
+
+.listItem {
+  display: block;
+}
+
+.listItemButton {
+  min-height: 48px;
+  justify-content: initial;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.listItemButtonCentered {
+  min-height: 48px;
+  justify-content: center;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.listItemText {
+  opacity: 1;
+}
+
+.listItemTextHidden {
+  opacity: 0;
+}
+
+.listItemTextSubItem {
+  opacity: 1;
+  margin-left: 3rem;
+}
+
+.listItemTextSubItemHidden {
+  opacity: 0;
+  margin-left: 3rem;
+}

@@ -5,11 +5,11 @@ import {
   Container,
   IconButton,
   useTheme,
-  styled,
 } from "@mui/material";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import InstagramIcon from "@mui/icons-material/Instagram";
+import styles from "../styles/components/Footer.module.scss";
 
 const Footer = () => {
   const theme = useTheme();
