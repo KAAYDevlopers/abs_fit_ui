@@ -1,5 +1,5 @@
 import * as React from "react";
-import { styled, alpha, useTheme } from "@mui/material/styles";
+import { alpha, useTheme } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -36,58 +36,42 @@ import {
 import { ExpandLess, ExpandMore } from "@mui/icons-material";
 import MobileNavigationDrawer from "./nav/MobileNavigationDrawer";
 import { Search, SearchIconWrapper, StyledInputBase } from "./Search";
+import styles from "../styles/components/AppHeader.module.scss";
 
-const DrawerHeader = styled("div")(({ theme }) => ({
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "flex-end",
-  padding: theme.spacing(0, 1),
-  // necessary for content to be below app bar
-  ...theme.mixins.toolbar,
-}));
+// DrawerHeader component
+const DrawerHeader: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
+  return <div className={styles.drawerHeader}>{children}</div>;
+};
 
-const StyledMenu = styled((props: any) => (
-  <Menu
-    elevation={0}
-    anchorOrigin={{
-      vertical: "bottom",
-      horizontal: "right",
-    }}
-    transformOrigin={{
-      vertical: "top",
-      horizontal: "right",
-    }}
-    {...props}
-  />
-))(({ theme }) => ({
-  "& .MuiPaper-root": {
-    borderRadius: 6,
-    marginTop: theme.spacing(1),
-    minWidth: 180,
-    color:
-      theme.palette.mode === "light"
-        ? "rgb(55, 65, 81)"
-        : theme.palette.grey[300],
-    boxShadow:
-      "rgb(255, 255, 255) 0px 0px 0px 0px, rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px",
-    "& .MuiMenu-list": {
-      padding: "4px 0",
-    },
-    "& .MuiMenuItem-root": {
-      "& .MuiSvgIcon-root": {
-        fontSize: 18,
-        color: theme.palette.text.secondary,
-        marginRight: theme.spacing(1.5),
-      },
-      "&:active": {
-        backgroundColor: alpha(
-          theme.palette.primary.main,
-          theme.palette.action.selectedOpacity
-        ),
-      },
-    },
-  },
-}));
+// StyledMenu component
+interface StyledMenuProps {
+  anchorEl: null | HTMLElement;
+  open: boolean;
+  onClose: () => void;
+  children: React.ReactNode;
+}
+
+const StyledMenu: React.FC<StyledMenuProps> = (props) => {
+  return (
+    <Menu
+      elevation={0}
+      anchorOrigin={{
+        vertical: "bottom",
+        horizontal: "right",
+      }}
+      transformOrigin={{
+        vertical: "top",
+        horizontal: "right",
+      }}
+      className={styles.styledMenu}
+      classes={{
+        paper: styles.menuPaper,
+        list: styles.menuList,
+      }}
+      {...props}
+    />
+  );
+};
 
 export default function PrimarySearchAppBar() {
   const [drawerOpen, setDrawerOpen] = React.useState(false);
@@ -140,44 +124,55 @@ export default function PrimarySearchAppBar() {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="sticky" sx={{ bgcolor: "whitesmoke" }}>
         <Container maxWidth="xl">
-          <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
+          <Toolbar className={styles.toolbar}>
             <IconButton
               size="large"
               ref={drawerButtonRef}
               edge="start"
               color="inherit"
               aria-label="open drawer"
-              sx={{
-                mr: 2,
-                alignItems: "left",
-                display: { xs: "block", md: "none" },
-              }}
+              className={`${styles.menuButton} d-md-none`}
               onClick={() => setIsDrawerOpen(true)}
             >
               <MenuIcon />
             </IconButton>
             <Box
-              component="img"
+              className={styles.logoContainer}
+              sx={{ display: "flex", alignItems: "center" }}
+            >
+              <Box
+                component="img"
+                className={styles.logoImage}
+                alt="Your logo."
+                src={Logo}
+              />
+            </Box>
+            <Box
               sx={{
-                height: 56,
-                borderRadius: "50%",
+                flexGrow: 1,
+                display: "flex",
+                justifyContent: "center",
                 alignItems: "center",
               }}
-              alt="Your logo."
-              src={Logo}
-            />
-            {isMobile ? null : (
-              <Search>
-                <SearchIconWrapper>
-                  <SearchIcon />
-                </SearchIconWrapper>
-                <StyledInputBase
-                  placeholder="Search for Products..."
-                  inputProps={{ "aria-label": "search" }}
-                />
-              </Search>
-            )}
-            {isMobile ? null : <Box sx={{ flexGrow: 1 }} />}
+            >
+              {isMobile ? null : (
+                <Search>
+                  <SearchIconWrapper>
+                    <SearchIcon />
+                  </SearchIconWrapper>
+                  <StyledInputBase
+                    placeholder="Search for Products..."
+                    inputProps={{ "aria-label": "search" }}
+                    onKeyPress={(e) => {
+                      if (e.key === "Enter") {
+                        // Future search functionality would be triggered here
+                        console.log("Search initiated for:");
+                      }
+                    }}
+                  />
+                </Search>
+              )}
+            </Box>
             <Box>
               <IconButton
                 size="large"
@@ -225,142 +220,6 @@ export default function PrimarySearchAppBar() {
         </Drawer>
       </AppBar>
       <Divider />
-      {/*<AppBar position="fixed" sx={{ bgcolor: "white", top: "64px" }}>
-        <Container maxWidth="xl">
-          <Toolbar>
-            {isMobile ? (
-              <Search>
-                <SearchIconWrapper>
-                  <SearchIcon />
-                </SearchIconWrapper>
-                <StyledInputBase
-                  placeholder="Search for Products..."
-                  inputProps={{ "aria-label": "search" }}
-                />
-              </Search>
-            ) : (
-              <div>
-                {NavigationItems.map((item, index) => (
-                  <div
-                    key={item.key}
-                    style={{ display: "inline-block", margin: "0 8px" }}
-                  >
-                    <div>
-                      <Button
-                        id="nav-button"
-                        aria-controls={open ? "nav-menu" : undefined}
-                        aria-haspopup="true"
-                        aria-expanded={open ? "true" : undefined}
-                        variant="contained"
-                        disableElevation
-                        onClick={(event) => handleClick(event, index)}
-                        endIcon={
-                          navIndex === index ? (
-                            <KeyboardArrowUpIcon />
-                          ) : (
-                            <KeyboardArrowDownIcon />
-                          )
-                        }
-                        sx={{
-                          backgroundColor: "#fff", // Replace 'yourColorHere' with the desired color
-                          "&:hover": {
-                            backgroundColor: "#f0f0f0", // Replace 'yourHoverColorHere' with the desired hover color
-                          },
-                        }}
-                      >
-                        {item.key}
-                      </Button>
-                      <StyledMenu
-                        id="nav-sub-menu"
-                        MenuListProps={{
-                          "aria-labelledby": "nav-sub-button",
-                        }}
-                        anchorEl={anchorEl}
-                        open={navIndex === index && open}
-                        onClose={handleClose}
-                      >
-                        {navIndex === index &&
-                          item.values &&
-                          item.values.map((value) => {
-                            return (
-                              <MenuItem onClick={handleClose} disableRipple>
-                                {value}
-                              </MenuItem>
-                            );
-                          })}
-                      </StyledMenu>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            )}
-          </Toolbar>
-          <Drawer anchor="left" open={drawerOpen} onClose={handleDrawerClose}>
-            <DrawerHeader sx={{ justifyContent: "space-around" }}>
-              {drawerOpen && (
-                <>
-                  <Typography
-                    size="md"
-                    fontWeight="bold"
-                    component="p"
-                    color={"black"}
-                  >
-                    MENU
-                  </Typography>
-                  <IconButton color="black" onClick={handleDrawerClose}>
-                    {theme.direction === "rtl" ? (
-                      <ArrowForwardIcon />
-                    ) : (
-                      <ArrowBackIcon />
-                    )}
-                  </IconButton>
-                </>
-              )}
-            </DrawerHeader>
-            <Divider />
-            <List
-              sx={{
-                width: "300px",
-                maxWidth: 350,
-                bgcolor: "background.paper",
-              }}
-            >
-              {NavigationItems.map((item, index) => {
-                return (
-                  <>
-                    <ListItemButton
-                      key={index}
-                      onClick={(event) => handleClick(event, index)}
-                    >
-                      <ListItemText primary={item.key} />
-                      {navIndex === index ? <ExpandLess /> : <ExpandMore />}
-                    </ListItemButton>
-                    <Collapse
-                      in={navIndex === index}
-                      timeout="auto"
-                      unmountOnExit
-                    >
-                      <List component="div" disablePadding>
-                        {item.values.map((value) => {
-                          return (
-                            <ListItemButton
-                              key={value}
-                              sx={{ pl: 4 }}
-                              onClick={() => handleDrawerClose()}
-                            >
-                              <ListItemText primary={value} />
-                            </ListItemButton>
-                          );
-                        })}
-                      </List>
-                    </Collapse>
-                  </>
-                );
-              })}
-            </List>
-          </Drawer>
-        </Container>
-      </AppBar> */}
     </Box>
   );
 }

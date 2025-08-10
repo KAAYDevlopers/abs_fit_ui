@@ -1,0 +1,85 @@
+.search {
+  position: relative;
+  display: flex;
+  align-items: center;
+  border-radius: 20px;
+  background-color: rgba(0, 0, 0, 0.05);
+  margin-left: 16px;
+  width: 100%;
+  border: 1px solid #e0e0e0;
+  transition: all 0.3s ease;
+  flex-grow: 1;
+  max-width: 500px;
+  margin: 0 auto;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+
+  &:hover,
+  &:focus-within {
+    background-color: #ffffff;
+    border-color: var(--primaryBlue);
+    box-shadow: 0 3px 8px rgba(0, 102, 204, 0.15);
+  }
+
+  @media (min-width: 0px) {
+    width: 100%;
+    max-width: 350px;
+    margin: 0 16px;
+  }
+
+  @media (min-width: 600px) {
+    width: 350px;
+    margin: 0 24px;
+  }
+
+  @media (min-width: 900px) {
+    width: 400px;
+  }
+
+  @media (min-width: 1200px) {
+    width: 500px;
+  }
+}
+
+.searchIconWrapper {
+  padding: 0 16px;
+  height: 100%;
+  position: absolute;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+}
+
+.inputRoot {
+  color: #333;
+  width: 100%;
+  font-family: "Open Sans", sans-serif;
+}
+
+.inputInput {
+  padding: 10px 10px 10px 0;
+  padding-left: calc(1em + 32px);
+  transition: all 0.3s ease;
+  width: 100%;
+  font-size: 0.95rem;
+
+  &::placeholder {
+    color: #999;
+    opacity: 1;
+  }
+}
+
+.clearButton {
+  color: #999;
+  padding: 4px;
+  margin-right: 4px;
+
+  &:hover {
+    color: var(--primaryBlue);
+  }
+
+  @media (min-width: 900px) {
+    width: 20ch;
+  }
+}

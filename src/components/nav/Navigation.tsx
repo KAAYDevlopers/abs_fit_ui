@@ -8,6 +8,7 @@ import {
   Button,
   Box,
   Typography,
+  InputBase,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import Logo from "../../content/ABSOLUTE.png";

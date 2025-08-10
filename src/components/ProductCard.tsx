@@ -1,5 +1,4 @@
 import * as React from "react";
-import { styled } from "@mui/material/styles";
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
 import CardMedia from "@mui/material/CardMedia";
@@ -9,6 +8,8 @@ import ReviewsView from "./ReviewsView";
 import _get from "lodash/get";
 import { CurrencyFormatter } from "../common/utils";
 import { Product } from "../types";
+import styles from "../styles/components/ProductCard.module.scss";
+import clsx from "clsx";
 
 interface ProductCardProps {
   product: Product;
@@ -18,10 +19,9 @@ interface LogoProps {
   src: string;
 }
 
-const Logo = styled((props: LogoProps) => {
-  const { src } = props;
+const Logo: React.FC<LogoProps> = ({ src }) => {
   return (
-    <div>
+    <div className={styles.logo}>
       <img
         src={src}
         alt="brandlogo"
@@ -29,87 +29,7 @@ const Logo = styled((props: LogoProps) => {
       />
     </div>
   );
-})(({ theme }) => ({
-  objectFit: "contain",
-  borderRadius: "50%",
-  height: "32px!important",
-  width: "32px!important",
-  maxWidth: 70,
-  maxHeight: 50,
-  [theme.breakpoints.up("lg")]: {
-    height: "44px!important",
-    width: "44px!important",
-  },
-}));
-
-const StyledImage = styled("img")(({ theme }) => ({
-  aspectRatio: "auto",
-  maxWidth: "100%",
-  maxHeight: "100%",
-  width: "100%",
-  height: "100%",
-  alignItems: "center",
-  display: "flex",
-  transition: "transform 0.3s ease",
-  "&:hover": {
-    transform: "scale(1.1)",
-  },
-}));
-
-const RibbonContainer = styled("div")({
-  position: "relative",
-  overflow: "visible",
-  paddingLeft: "20px", // Add padding to the left of the container
-});
-
-const Ribbon = styled("div")(({ theme }) => ({
-  position: "absolute",
-  top: "10%",
-  left: "0", // Set left to 0
-  transform: "translateY(-50%)",
-  height: "fit-content",
-  maxWidth: "75px",
-  width: "auto",
-  background: "#f44336!important",
-  color: "#fff",
-  textAlign: "center",
-  justifyContent: "center",
-  alignItems: "center",
-  display: "flex",
-  borderRadius: "0 0 12px!important",
-  zIndex: 999,
-  padding: "0 18px!important",
-  fontWeight: "bold",
-  [theme.breakpoints.up("lg")]: {
-    borderRadius: "4px",
-    maxWidth: "106px",
-    left: "-7px", // Adjust the left position
-    fontSize: "16px!important",
-    lineHeight: "24px!important",
-  },
-}));
-
-const ActionContainer = styled("div")({
-  display: "flex",
-  justifyContent: "space-between",
-  alignItems: "center",
-});
-
-const PriceView = styled("div")(({ theme }) => ({
-  marginBottom: "0.5rem",
-  alignItems: "flex-start",
-  display: "flex",
-  [theme.breakpoints.up("lg")]: {
-    marginBottom: 0,
-    flexDirection: "column",
-  },
-}));
-
-const Text = styled("p")(({ theme }) => ({
-  margin: "0 0.5rem",
-  textDecoration: "line-through",
-  fontWeight: 300,
-}));
+};
 
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const [count, setCount] = React.useState(0);
@@ -175,6 +95,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             },
           }}
           onClick={handleProductClick}
+          className={styles.productCard}
         >
           <CardHeader
             avatar={
@@ -187,33 +108,34 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             title={product.productName}
           />
           <CardMedia component="div">
-            <RibbonContainer>
-              <StyledImage
+            <div className={styles.ribbonContainer}>
+              <img
                 src={
                   "https://dukaan.b-cdn.net/700x700/webp/upload_file_service/f7cc6d82-6cd1-490f-922f-0b17bf8e0b25/1b46a7a6-9402-4645-8237-9d70e149a752-720x-1.webp"
                 }
                 alt={"prod-img"}
+                className={styles.styledImage}
               />
 
-              <Ribbon>{`${getDiscount()}% OFF`}</Ribbon>
-            </RibbonContainer>
+              <div className={styles.ribbon}>{`${getDiscount()}% OFF`}</div>
+            </div>
             <ReviewsView />
           </CardMedia>
 
-          <div style={{ margin: "4px 20px" }}>
-            <ActionContainer>
-              <PriceView>
+          <div className={styles.actionWrapper}>
+            <div className={styles.actionContainer}>
+              <div className={styles.priceView}>
                 <h3 style={{ margin: 0 }}>
                   <CurrencyFormatter amount={onSalePrice} currency="INR" />
                 </h3>
                 <div>
-                  <Text>
+                  <p className={styles.text}>
                     <CurrencyFormatter amount={buyPrice} currency="INR" />
-                  </Text>
+                  </p>
                 </div>
-              </PriceView>
+              </div>
               {getButtonView()}
-            </ActionContainer>
+            </div>
           </div>
         </Card>
       </Box>

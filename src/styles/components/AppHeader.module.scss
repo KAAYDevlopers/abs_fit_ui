@@ -1,0 +1,73 @@
+.drawerHeader {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 8px;
+}
+
+.styledMenu {
+  .menuPaper {
+    border-radius: 6px;
+    margin-top: 8px;
+    min-width: 180px;
+    color: rgb(55, 65, 81);
+    box-shadow: rgb(255, 255, 255) 0px 0px 0px 0px,
+      rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
+      rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+
+    .menuList {
+      padding: 4px 0;
+    }
+
+    .menuItem {
+      .icon {
+        font-size: 18px;
+        color: rgba(0, 0, 0, 0.6);
+        margin-right: 12px;
+      }
+
+      &:active {
+        background-color: rgba(25, 118, 210, 0.12);
+      }
+    }
+  }
+}
+
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 16px;
+
+  @media (max-width: 600px) {
+    padding: 0 8px;
+  }
+}
+
+.logoContainer {
+  display: flex;
+  align-items: center;
+  margin-right: 16px;
+}
+
+.logoImage {
+  height: 56px;
+  border-radius: 50%;
+  object-fit: contain;
+  display: block;
+
+  @media (max-width: 600px) {
+    height: 48px;
+  }
+}
+.menuButton {
+  margin-right: 16px;
+  display: none;
+  align-items: center;
+
+  @media (max-width: 899px) {
+    display: flex;
+  }
+}

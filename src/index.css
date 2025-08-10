@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;700&display=swap");
 
 * {
   box-sizing: border-box;
@@ -6,19 +6,57 @@
   padding: 0;
 }
 
-:root {
-  --mainColor: #2b2b2b;
-  --borderColor: #cacaca;
+html,
+body {
+  overflow-x: hidden;
+  max-width: 100%;
 }
 
 :root {
   --mainColor: #2b2b2b;
   --borderColor: #cacaca;
+  --primaryBlue: #0066cc;
+  --white: #ffffff;
+}
+
+/* Global button styles */
+.MuiButton-outlined {
+  background-color: var(--white);
+  border-color: var(--primaryBlue);
+  color: var(--primaryBlue);
+  padding: 6px 16px;
+  border-radius: 4px;
+  font-weight: 500;
+  text-transform: none;
+}
+
+.MuiButton-outlined:hover {
+  background-color: var(--primaryBlue);
+  color: var(--white);
+  border-color: var(--primaryBlue);
+}
+
+/* View All button styling with higher specificity */
+button.view-all-btn {
+  background-color: var(--white) !important;
+  border: 1px solid var(--primaryBlue) !important;
+  color: var(--primaryBlue) !important;
+  padding: 6px 16px;
+  border-radius: 4px;
+  font-weight: 500;
+  text-transform: none;
+  transition: all 0.3s ease;
+}
+
+button.view-all-btn:hover {
+  background-color: var(--primaryBlue) !important;
+  color: var(--white) !important;
+  border-color: var(--primaryBlue) !important;
 }
 
 body,
 :root {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
 
 /* ================================
@@ -359,7 +397,7 @@ MEDIA QUERIES
 
   .nav_item_content:hover a:before,
   .nav_item_content .active:before {
-    content: '';
+    content: "";
     position: absolute;
     left: 0;
     bottom: 0;
@@ -369,7 +407,7 @@ MEDIA QUERIES
 }
 body,
 :root {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
 
 /* ================================
@@ -710,7 +748,7 @@ MEDIA QUERIES
 
   .nav_item_content:hover a:before,
   .nav_item_content .active:before {
-    content: '';
+    content: "";
     position: absolute;
     left: 0;
     bottom: 0;
