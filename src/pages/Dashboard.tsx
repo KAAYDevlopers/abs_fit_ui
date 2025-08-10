@@ -197,7 +197,7 @@ const Dashboard: React.FC = () => {
             <Typography variant="h4" fontWeight="600" color="#333">
               Our Top Sellers
             </Typography>
-            <Button variant="outlined" className={styles.viewAllButton}>
+            <Button variant="outlined" className="view-all-btn">
               View all
             </Button>
           </Box>
@@ -214,7 +214,7 @@ const Dashboard: React.FC = () => {
             <Typography variant="h4" fontWeight="600" color="#333">
               Top Categories
             </Typography>
-            <Button variant="outlined" className={styles.viewAllButton}>
+            <Button variant="outlined" className="view-all-btn">
               Shop by Category
             </Button>
           </Box>
@@ -240,7 +240,7 @@ const Dashboard: React.FC = () => {
             <Typography variant="h4" fontWeight="600" color="#333">
               Best Sellers
             </Typography>
-            <Button variant="outlined" className={styles.viewAllButton}>
+            <Button variant="outlined" className="view-all-btn">
               View all
             </Button>
           </Box>
@@ -256,7 +256,7 @@ const Dashboard: React.FC = () => {
             <Typography variant="h4" fontWeight="600" color="#333">
               Plant Based Proteins
             </Typography>
-            <Button variant="outlined" className={styles.viewAllButton}>
+            <Button variant="outlined" className="view-all-btn">
               View all
             </Button>
           </Box>

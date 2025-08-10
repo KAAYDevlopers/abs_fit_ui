@@ -12,6 +12,11 @@
   flex-shrink: 0;
   white-space: nowrap;
   box-sizing: border-box;
+  display: none;
+
+  @media (max-width: 900px) {
+    display: block;
+  }
 
   &.open {
     width: 240px;

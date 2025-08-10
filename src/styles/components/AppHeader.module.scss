@@ -36,19 +36,38 @@
 .toolbar {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 16px;
+
+  @media (max-width: 600px) {
+    padding: 0 8px;
+  }
+}
+
+.logoContainer {
+  display: flex;
+  align-items: center;
+  margin-right: 16px;
 }
 
 .logoImage {
   height: 56px;
   border-radius: 50%;
-  align-items: center;
-}
+  object-fit: contain;
+  display: block;
 
+  @media (max-width: 600px) {
+    height: 48px;
+  }
+}
 .menuButton {
   margin-right: 16px;
-  align-items: left;
+  display: none;
+  align-items: center;
 
-  @media (min-width: 900px) {
-    display: none;
+  @media (max-width: 899px) {
+    display: flex;
   }
 }

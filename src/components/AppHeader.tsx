@@ -131,29 +131,48 @@ export default function PrimarySearchAppBar() {
               edge="start"
               color="inherit"
               aria-label="open drawer"
-              className={styles.menuButton}
+              className={`${styles.menuButton} d-md-none`}
               onClick={() => setIsDrawerOpen(true)}
             >
               <MenuIcon />
             </IconButton>
             <Box
-              component="img"
-              className={styles.logoImage}
-              alt="Your logo."
-              src={Logo}
-            />
-            {isMobile ? null : (
-              <Search>
-                <SearchIconWrapper>
-                  <SearchIcon />
-                </SearchIconWrapper>
-                <StyledInputBase
-                  placeholder="Search for Products..."
-                  inputProps={{ "aria-label": "search" }}
-                />
-              </Search>
-            )}
-            {isMobile ? null : <Box sx={{ flexGrow: 1 }} />}
+              className={styles.logoContainer}
+              sx={{ display: "flex", alignItems: "center" }}
+            >
+              <Box
+                component="img"
+                className={styles.logoImage}
+                alt="Your logo."
+                src={Logo}
+              />
+            </Box>
+            <Box
+              sx={{
+                flexGrow: 1,
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              {isMobile ? null : (
+                <Search>
+                  <SearchIconWrapper>
+                    <SearchIcon />
+                  </SearchIconWrapper>
+                  <StyledInputBase
+                    placeholder="Search for Products..."
+                    inputProps={{ "aria-label": "search" }}
+                    onKeyPress={(e) => {
+                      if (e.key === "Enter") {
+                        // Future search functionality would be triggered here
+                        console.log("Search initiated for:");
+                      }
+                    }}
+                  />
+                </Search>
+              )}
+            </Box>
             <Box>
               <IconButton
                 size="large"

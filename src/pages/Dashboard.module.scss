@@ -1,6 +1,14 @@
+/* Adding a global style to ensure content doesn't cause horizontal scroll */
+:global(html),
+:global(body) {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
 .styledSection {
   margin-bottom: 3rem;
   width: 100%;
+  box-sizing: border-box;
 }
 
 .sectionHeader {
@@ -8,6 +16,8 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 2rem;
+  width: 100%;
+  flex-wrap: wrap;
 }
 
 .productGrid {
@@ -15,6 +25,8 @@
   flex-wrap: wrap;
   gap: 1rem;
   justify-content: flex-start;
+  width: 100%;
+  box-sizing: border-box;
 
   @media (max-width: 900px) {
     justify-content: center;
@@ -26,6 +38,8 @@
   flex-wrap: wrap;
   gap: 1.5rem;
   justify-content: center;
+  width: 100%;
+  box-sizing: border-box;
 
   @media (max-width: 900px) {
     gap: 1rem;
@@ -43,6 +57,7 @@
   cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   min-width: 180px;
+  box-sizing: border-box;
 
   &:hover {
     transform: translateY(-4px);
@@ -63,4 +78,5 @@
   margin: 0 auto;
   background-color: #fff;
   border-radius: 0.5rem;
+  box-sizing: border-box;
 }

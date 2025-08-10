@@ -41,9 +41,9 @@ const AppDrawer: React.FC<AppDrawerProps> = ({
   return (
     <Box sx={{ flexGrow: 1 }}>
       <MuiDrawer
-        open={true}
+        open={open}
         anchor={anchor}
-        variant="permanent"
+        variant="temporary"
         className={clsx(styles.drawer, {
           [styles.open]: open,
           [styles.closed]: !open,
